@@ -11,6 +11,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Set up Chrome options for Selenium
 chrome_options = Options()
-chrome_options.add_arguement("--headless") # Run in headless mode (no UI)
+chrome_options.add_argument("--headless") # Run in headless mode (no UI)
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--diasble-dev-shm-usage")
