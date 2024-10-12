@@ -17,3 +17,4 @@ def setup_driver():
     chrome_options.add_argument("--diasble-dev-shm-usage")
     
     service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
