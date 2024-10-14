@@ -18,3 +18,12 @@ def setup_driver():
     
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
+
+
+# Example function to scrape data from a dynamic website
+def scrape_dynamic_site(url):
+    driver = setup_driver()
+    driver.get(url)
+    
+    time.sleep(3) # Giving the page time to load
