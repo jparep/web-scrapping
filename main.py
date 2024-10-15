@@ -27,3 +27,6 @@ def scrape_dynamic_site(url):
     driver.get(url)
     
     time.sleep(3) # Giving the page time to load
+    
+    # Locate the elements to be scraped, modify based on website struture
+    product_elements = driver.find_element(By.CSS_SELECTOR, ".product-item")
