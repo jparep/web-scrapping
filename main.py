@@ -8,6 +8,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import logging
+
+# Setting up loggin for better error tracking and debugging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Setting up Selenium for hadling JavaScript-driven content
 def setup_driver():
@@ -30,3 +34,5 @@ def scrape_dynamic_site(url):
     
     # Locate the elements to be scraped, modify based on website struture
     product_elements = driver.find_element(By.CSS_SELECTOR, ".product-item")
+    
+
