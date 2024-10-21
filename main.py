@@ -68,3 +68,7 @@ def main():
         if not scrapped_data:
             scrapped_data.to_csv('scrapped_data.csv', index=False) # Save data to CSV
             logging.infor(f"Scrapped data saved to 'scrapped_data.csv'.")
+            print(scrapped_data.head()) # Display 
+        else:
+            logging.warning("No data was scrapped.")
+            
