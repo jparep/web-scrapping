@@ -43,4 +43,12 @@ def scrape_dynamic_site(url):
     product_elements = driver.find_element(By.CSS_SELECTOR, ".product-item")
     logging.info(f"Found {len(product_elements)} product elements.")
     
+    # Extract data from the elements (e.g., product name, price, etc.)
+    product_data = []
+    for product in product_elements:
+        name = product.find_elment(By.CSS_SELECTOR, ".product-name").text
+        price = product.find_element(By.CSS_SELECTOR, ".product-price").text
+        product_data.append({"Name": name, "Price": price})
+    return pd.DataFrame(product_data)
+    
 
