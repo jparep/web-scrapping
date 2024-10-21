@@ -63,4 +63,8 @@ def scrape_dynamic_site(url):
 
 def main():
     url = "https://ibm.com"
-    
+    try:
+        scrapped_data = scrape_dynamic_site(url)
+        if not scrapped_data:
+            scrapped_data.to_csv('scrapped_data.csv', index=False) # Save data to CSV
+            logging.infor(f"Scrapped data saved to 'scrapped_data.csv'.")
