@@ -13,16 +13,21 @@ import logging
 # Setting up loggin for better error tracking and debugging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Setting up Selenium for hadling JavaScript-driven content
+
 def setup_driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--headless") # Run in headless mode (no UI)
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--diasble-dev-shm-usage")
-    
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    return driver
+    """Setting up Selenium for hadling JavaScript-driven content"""
+    try:
+        chrome_options = Options()
+        chrome_options.add_argument("--headless") # Run in headless mode (no UI)
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--diasble-dev-shm-usage")
+        
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        logging.info("Web driver successfully initialized.")
+        return driver
+    except Exception as e:
+        logging.error(f"Error Initializing webdriver: {e}")
 
 
 # Example function to scrape data from a dynamic website
