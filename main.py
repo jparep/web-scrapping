@@ -73,3 +73,6 @@ def main():
             logging.warning("No data was scrapped.")
     except Exception as e:
         logging.error(f"Failed to scraped the website: {e}")
+
+if __name__=="__main__":
+    main()
