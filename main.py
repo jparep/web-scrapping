@@ -28,27 +28,35 @@ def setup_driver():
         return driver
     except Exception as e:
         logging.error(f"Error Initializing webdriver: {e}")
+        raise
 
 
 def scrape_dynamic_site(url):
     """Scrape data from a dynamic website."""
     driver = None
-    driver = setup_driver()
-    logging.info(f"Accessing {url}...")
-    driver.get(url)
+    try:
+        driver = setup_driver()
+        logging.info(f"Accessing {url}...")
+        driver.get(url)
+        
+        time.sleep(3) # Giving the page time to load
+        
+        # Locate the elements to be scraped, modify based on website struture
+        product_elements = driver.find_element(By.CSS_SELECTOR, ".product-item")
+        logging.info(f"Found {len(product_elements)} product elements.")
+        
+        # Extract data from the elements (e.g., product name, price, etc.)
+        product_data = []
+        for product in product_elements:
+            name = product.find_elment(By.CSS_SELECTOR, ".product-name").text
+            price = product.find_element(By.CSS_SELECTOR, ".product-price").text
+            product_data.append({"Name": name, "Price": price})
+        return pd.DataFrame(product_data)
     
-    time.sleep(3) # Giving the page time to load
-    
-    # Locate the elements to be scraped, modify based on website struture
-    product_elements = driver.find_element(By.CSS_SELECTOR, ".product-item")
-    logging.info(f"Found {len(product_elements)} product elements.")
-    
-    # Extract data from the elements (e.g., product name, price, etc.)
-    product_data = []
-    for product in product_elements:
-        name = product.find_elment(By.CSS_SELECTOR, ".product-name").text
-        price = product.find_element(By.CSS_SELECTOR, ".product-price").text
-        product_data.append({"Name": name, "Price": price})
-    return pd.DataFrame(product_data)
-    
-
+    except Exception as e:
+        logging.error(f"Error during scrapping {e}")
+        raise
+    finally:
+        if driver:
+            driver.quit()
+            logging.info("WebDriver closed.")
