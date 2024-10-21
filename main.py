@@ -30,8 +30,9 @@ def setup_driver():
         logging.error(f"Error Initializing webdriver: {e}")
 
 
-# Example function to scrape data from a dynamic website
 def scrape_dynamic_site(url):
+    """Scrape data from a dynamic website."""
+    driver = None
     driver = setup_driver()
     driver.get(url)
     
