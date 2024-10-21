@@ -34,6 +34,7 @@ def scrape_dynamic_site(url):
     """Scrape data from a dynamic website."""
     driver = None
     driver = setup_driver()
+    logging.info(f"Accessing {url}...")
     driver.get(url)
     
     time.sleep(3) # Giving the page time to load
