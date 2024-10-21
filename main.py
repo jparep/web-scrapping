@@ -60,3 +60,7 @@ def scrape_dynamic_site(url):
         if driver:
             driver.quit()
             logging.info("WebDriver closed.")
+
+def main():
+    url = "https://ibm.com"
+    
