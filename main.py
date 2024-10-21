@@ -71,4 +71,5 @@ def main():
             print(scrapped_data.head()) # Display 
         else:
             logging.warning("No data was scrapped.")
-            
+    except Exception as e:
+        logging.error(f"Failed to scraped the website: {e}")
