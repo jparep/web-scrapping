@@ -17,3 +17,8 @@ class DynamicSiteScraper:
         self.url = url
         self.is_product_page = is_product_page
         self.driver = None
+
+    def setup_driver(self) -> None:
+        """Sets up Selenium Webdriver for handling JavaScript-driven content"""
+        chrom_options = Options()
+        chrom_options.add_argument("--headless") # Run in headless mode (no UI)
