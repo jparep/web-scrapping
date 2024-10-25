@@ -11,3 +11,9 @@ import logging
 
 # Configure loggin for better error tracking and debugging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+class DynamicSiteScraper:
+    def __init__(self, url, is_product_page=True) -> None:
+        self.url = url
+        self.is_product_page = is_product_page
+        self.driver = None
