@@ -1,0 +1,43 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore virtual environment directories
+env/
+venv/
+.venv/
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore output files
+*.csv
+
+# Ignore Jupyter notebook checkpoints (if applicable)
+.ipynb_checkpoints
+
+# Ignore selenium webdriver manager binaries
+**/webdriver_manager/
+
+# Ignore config and sensitive information
+.env
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore compiled C extensions
+*.so
+
+# Ignore macOS specific files
+._*
+.Spotlight-V100
+.Trashes
+*.swp
